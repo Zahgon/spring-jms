@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringJmsApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringJmsApplication.class, args);
-  }
+    public static void main(String[] args) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -13,32 +13,25 @@ import org.springframework.messaging.MessageChannel;
 @Configuration
 public class OutboundGatewayConfig {
 
-  @Value("${destination.order.request}")
-  private String orderRequestDestination;
+    @Value("${destination.order.request}")
+    private String orderRequestDestination;
 
-  @Value("${destination.order.response}")
-  private String orderResponseDestination;
+    @Value("${destination.order.response}")
+    private String orderResponseDestination;
 
-  @Bean
-  public MessageChannel outboundOrderRequestChannel() {
-    return new DirectChannel();
-  }
+    @Bean
+    public MessageChannel outboundOrderRequestChannel() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public MessageChannel outboundOrderResponseChannel() {
-    return new QueueChannel();
-  }
+    @Bean
+    public MessageChannel outboundOrderResponseChannel() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  @ServiceActivator(inputChannel = "outboundOrderRequestChannel")
-  public JmsOutboundGateway jmsOutboundGateway(
-      ConnectionFactory connectionFactory) {
-    JmsOutboundGateway gateway = new JmsOutboundGateway();
-    gateway.setConnectionFactory(connectionFactory);
-    gateway.setRequestDestinationName(orderRequestDestination);
-    gateway.setReplyDestinationName(orderResponseDestination);
-    gateway.setReplyChannel(outboundOrderResponseChannel());
-
-    return gateway;
-  }
+    @Bean
+    @ServiceActivator(inputChannel = "outboundOrderRequestChannel")
+    public JmsOutboundGateway jmsOutboundGateway(ConnectionFactory connectionFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -10,33 +10,24 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class SenderConfig {
 
-  @Value("${activemq.broker-url}")
-  private String brokerUrl;
+    @Value("${activemq.broker-url}")
+    private String brokerUrl;
 
-  @Value("${destination.order}")
-  private String orderDestination;
+    @Value("${destination.order}")
+    private String orderDestination;
 
-  @Bean
-  public ActiveMQConnectionFactory senderActiveMQConnectionFactory() {
-    ActiveMQConnectionFactory activeMQConnectionFactory =
-        new ActiveMQConnectionFactory();
-    activeMQConnectionFactory.setBrokerURL(brokerUrl);
+    @Bean
+    public ActiveMQConnectionFactory senderActiveMQConnectionFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return activeMQConnectionFactory;
-  }
+    @Bean
+    public CachingConnectionFactory cachingConnectionFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public CachingConnectionFactory cachingConnectionFactory() {
-    return new CachingConnectionFactory(
-        senderActiveMQConnectionFactory());
-  }
-
-  @Bean
-  public JmsTemplate orderJmsTemplate() {
-    JmsTemplate jmsTemplate =
-        new JmsTemplate(cachingConnectionFactory());
-    jmsTemplate.setDefaultDestinationName(orderDestination);
-
-    return jmsTemplate;
-  }
+    @Bean
+    public JmsTemplate orderJmsTemplate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

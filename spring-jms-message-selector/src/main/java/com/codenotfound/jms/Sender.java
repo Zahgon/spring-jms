@@ -9,31 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class Sender {
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(Sender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 
-  @Autowired
-  private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
-  public void send(String destination, String message,
-      boolean isHighPriority) {
-    LOGGER.info("sending message='{}' with highPriority='{}'",
-        message, isHighPriority);
-
-    if (isHighPriority) {
-      jmsTemplate.convertAndSend(destination, message,
-          messagePostProcessor -> {
-            messagePostProcessor.setStringProperty("priority",
-                "high");
-            return messagePostProcessor;
-          });
-    } else {
-      jmsTemplate.convertAndSend(destination, message,
-          messagePostProcessor -> {
-            messagePostProcessor.setStringProperty("priority",
-                "low");
-            return messagePostProcessor;
-          });
+    public void send(String destination, String message, boolean isHighPriority) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-  }
 }

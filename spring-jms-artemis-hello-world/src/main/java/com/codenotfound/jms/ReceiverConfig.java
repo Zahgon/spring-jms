@@ -11,27 +11,21 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 @EnableJms
 public class ReceiverConfig {
 
-  @Value("${artemis.broker-url}")
-  private String brokerUrl;
+    @Value("${artemis.broker-url}")
+    private String brokerUrl;
 
-  @Bean
-  public ActiveMQConnectionFactory receiverActiveMQConnectionFactory() {
-    return new ActiveMQConnectionFactory(brokerUrl);
-  }
+    @Bean
+    public ActiveMQConnectionFactory receiverActiveMQConnectionFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
-    DefaultJmsListenerContainerFactory factory =
-        new DefaultJmsListenerContainerFactory();
-    factory
-        .setConnectionFactory(receiverActiveMQConnectionFactory());
-    factory.setConcurrency("3-10");
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return factory;
-  }
-
-  @Bean
-  public Receiver receiver() {
-    return new Receiver();
-  }
+    @Bean
+    public Receiver receiver() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

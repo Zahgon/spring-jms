@@ -11,26 +11,16 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 @EnableJms
 public class ReceiverConfig {
 
-  @Value("${activemq.broker-url}")
-  private String brokerUrl;
+    @Value("${activemq.broker-url}")
+    private String brokerUrl;
 
-  @Bean
-  public ActiveMQConnectionFactory receiverActiveMQConnectionFactory() {
-    ActiveMQConnectionFactory activeMQConnectionFactory =
-        new ActiveMQConnectionFactory();
-    activeMQConnectionFactory.setBrokerURL(brokerUrl);
+    @Bean
+    public ActiveMQConnectionFactory receiverActiveMQConnectionFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return activeMQConnectionFactory;
-  }
-
-  @Bean
-  public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
-    DefaultJmsListenerContainerFactory factory =
-        new DefaultJmsListenerContainerFactory();
-    factory
-        .setConnectionFactory(receiverActiveMQConnectionFactory());
-    factory.setPubSubDomain(true);
-
-    return factory;
-  }
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -13,43 +13,32 @@ import org.springframework.jms.listener.SimpleMessageListenerContainer;
 @Configuration
 public class ConsumingChannelConfig {
 
-  @Value("${destination.integration}")
-  private String integrationDestination;
+    @Value("${destination.integration}")
+    private String integrationDestination;
 
-  @Bean
-  public DirectChannel consumingChannel() {
-    return new DirectChannel();
-  }
+    @Bean
+    public DirectChannel consumingChannel() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public JmsMessageDrivenEndpoint jmsMessageDrivenEndpoint(
-      ConnectionFactory connectionFactory) {
-    JmsMessageDrivenEndpoint endpoint = new JmsMessageDrivenEndpoint(
-        simpleMessageListenerContainer(connectionFactory),
-        channelPublishingJmsMessageListener());
-    endpoint.setOutputChannel(consumingChannel());
+    @Bean
+    public JmsMessageDrivenEndpoint jmsMessageDrivenEndpoint(ConnectionFactory connectionFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return endpoint;
-  }
+    @Bean
+    public SimpleMessageListenerContainer simpleMessageListenerContainer(ConnectionFactory connectionFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public SimpleMessageListenerContainer simpleMessageListenerContainer(
-      ConnectionFactory connectionFactory) {
-    SimpleMessageListenerContainer container =
-        new SimpleMessageListenerContainer();
-    container.setConnectionFactory(connectionFactory);
-    container.setDestinationName(integrationDestination);
-    return container;
-  }
+    @Bean
+    public ChannelPublishingJmsMessageListener channelPublishingJmsMessageListener() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public ChannelPublishingJmsMessageListener channelPublishingJmsMessageListener() {
-    return new ChannelPublishingJmsMessageListener();
-  }
-
-  @Bean
-  @ServiceActivator(inputChannel = "consumingChannel")
-  public CountDownLatchHandler countDownLatchHandler() {
-    return new CountDownLatchHandler();
-  }
+    @Bean
+    @ServiceActivator(inputChannel = "consumingChannel")
+    public CountDownLatchHandler countDownLatchHandler() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

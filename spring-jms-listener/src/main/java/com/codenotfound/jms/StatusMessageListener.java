@@ -10,34 +10,23 @@ import org.slf4j.LoggerFactory;
 
 public class StatusMessageListener implements MessageListener {
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(Sender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 
-  private String id;
+    private String id;
 
-  private CountDownLatch latch = new CountDownLatch(1);
+    private CountDownLatch latch = new CountDownLatch(1);
 
-  public StatusMessageListener(String id) {
-    super();
-    this.id = id;
-  }
-
-  @Override
-  public void onMessage(Message message) {
-    if (message instanceof TextMessage) {
-      try {
-        String text = ((TextMessage) message).getText();
-        LOGGER.info("id='{}' received status='{}'", id, text);
-        latch.countDown();
-      } catch (JMSException e) {
-        LOGGER.error("unable to read message payload", e);
-      }
-    } else {
-      LOGGER.error("received unsupported message type");
+    public StatusMessageListener(String id) {
+        super();
+        this.id = id;
     }
-  }
 
-  public CountDownLatch getLatch() {
-    return latch;
-  }
+    @Override
+    public void onMessage(Message message) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    public CountDownLatch getLatch() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

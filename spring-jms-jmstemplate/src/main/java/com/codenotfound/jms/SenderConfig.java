@@ -12,50 +12,37 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class SenderConfig {
 
-  @Value("${activemq.broker-url}")
-  private String brokerUrl;
+    @Value("${activemq.broker-url}")
+    private String brokerUrl;
 
-  @Value("${destination.order}")
-  private String orderDestination;
+    @Value("${destination.order}")
+    private String orderDestination;
 
-  @Value("${destination.status}")
-  private String statusDestination;
+    @Value("${destination.status}")
+    private String statusDestination;
 
-  @Bean
-  public ActiveMQConnectionFactory senderConnectionFactory() {
-    ActiveMQConnectionFactory activeMQConnectionFactory =
-        new ActiveMQConnectionFactory();
-    activeMQConnectionFactory.setBrokerURL(brokerUrl);
+    @Bean
+    public ActiveMQConnectionFactory senderConnectionFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return activeMQConnectionFactory;
-  }
+    @Bean
+    public CachingConnectionFactory cachingConnectionFactory() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public CachingConnectionFactory cachingConnectionFactory() {
-    CachingConnectionFactory cachingConnectionFactory =
-        new CachingConnectionFactory(senderConnectionFactory());
-    cachingConnectionFactory.setSessionCacheSize(10);
+    @Bean
+    public Destination orderDestination() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return cachingConnectionFactory;
-  }
+    @Bean
+    public Destination statusDestination() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public Destination orderDestination() {
-    return new ActiveMQQueue(orderDestination);
-  }
-
-  @Bean
-  public Destination statusDestination() {
-    return new ActiveMQQueue(statusDestination);
-  }
-
-  @Bean
-  public JmsTemplate orderJmsTemplate() {
-    JmsTemplate jmsTemplate =
-        new JmsTemplate(cachingConnectionFactory());
-    jmsTemplate.setDefaultDestination(orderDestination());
-    jmsTemplate.setReceiveTimeout(5000);
-
-    return jmsTemplate;
-  }
+    @Bean
+    public JmsTemplate orderJmsTemplate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

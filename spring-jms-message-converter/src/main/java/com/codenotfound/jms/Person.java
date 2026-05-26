@@ -2,38 +2,38 @@ package com.codenotfound.jms;
 
 public class Person {
 
-  private String name;
+    private String name;
 
-  private int age;
+    private int age;
 
-  public Person() {
-    super();
-  }
+    public Person() {
+        super();
+    }
 
-  public Person(String name, int age) {
-    super();
-    this.name = name;
-    this.age = age;
-  }
+    public Person(String name, int age) {
+        super();
+        this.name = name;
+        this.age = age;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public int getAge() {
-    return age;
-  }
+    public int getAge() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  public void setAge(int age) {
-    this.age = age;
-  }
+    public void setAge(int age) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public String toString() {
-    return "person[name=" + name + ", age=" + age + "]";
-  }
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

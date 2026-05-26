@@ -10,18 +10,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Sender {
 
-  @Value("${destination.topic}")
-  private String topicDestination;
+    @Value("${destination.topic}")
+    private String topicDestination;
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(Sender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 
-  @Autowired
-  private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
-  public void send(String message) {
-    LOGGER.info("sending message='{}' to destination='{}'", message,
-        topicDestination);
-    jmsTemplate.convertAndSend(topicDestination, message);
-  }
+    public void send(String message) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

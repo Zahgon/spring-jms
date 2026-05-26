@@ -9,15 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class Sender {
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(Sender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 
-  @Autowired
-  private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
-  public void send(String destination, Person person) {
-    LOGGER.info("sending person='{}' to destination='{}'", person,
-        destination);
-    jmsTemplate.convertAndSend(destination, person);
-  }
+    public void send(String destination, Person person) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

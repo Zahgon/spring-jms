@@ -8,18 +8,16 @@ import org.springframework.messaging.MessageHandler;
 
 public class CountDownLatchHandler implements MessageHandler {
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(CountDownLatchHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CountDownLatchHandler.class);
 
-  private CountDownLatch latch = new CountDownLatch(10);
+    private CountDownLatch latch = new CountDownLatch(10);
 
-  public CountDownLatch getLatch() {
-    return latch;
-  }
+    public CountDownLatch getLatch() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Override
-  public void handleMessage(Message<?> message) {
-    LOGGER.info("received message='{}'", message);
-    latch.countDown();
-  }
+    @Override
+    public void handleMessage(Message<?> message) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

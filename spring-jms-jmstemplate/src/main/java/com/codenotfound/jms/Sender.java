@@ -13,37 +13,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Sender {
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(Sender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 
-  @Autowired
-  private Destination statusDestination;
+    @Autowired
+    private Destination statusDestination;
 
-  @Autowired
-  private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
-  public String sendOrder(String orderNumber) throws JMSException {
-    final AtomicReference<Message> message = new AtomicReference<>();
+    public String sendOrder(String orderNumber) throws JMSException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    jmsTemplate.convertAndSend(orderNumber, messagePostProcessor -> {
-      message.set(messagePostProcessor);
-      return messagePostProcessor;
-    });
-
-    String messageId = message.get().getJMSMessageID();
-    LOGGER.info("sending OrderNumber='{}' with MessageId='{}'",
-        orderNumber, messageId);
-
-    return messageId;
-  }
-
-  public String receiveOrderStatus(String correlationId) {
-    String status = (String) jmsTemplate.receiveSelectedAndConvert(
-        statusDestination,
-        "JMSCorrelationID = '" + correlationId + "'");
-    LOGGER.info("receive Status='{}' for CorrelationId='{}'", status,
-        correlationId);
-
-    return status;
-  }
+    public String receiveOrderStatus(String correlationId) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -16,52 +16,37 @@ import org.springframework.messaging.MessageChannel;
 @EnableIntegration
 public class InboundGatewayConfig {
 
-  @Value("${destination.order.request}")
-  private String orderRequestDestination;
+    @Value("${destination.order.request}")
+    private String orderRequestDestination;
 
-  @Bean
-  public MessageChannel inboundOrderRequestChannel() {
-    return new DirectChannel();
-  }
+    @Bean
+    public MessageChannel inboundOrderRequestChannel() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public MessageChannel inboundOrderResponseChannel() {
-    return new DirectChannel();
-  }
+    @Bean
+    public MessageChannel inboundOrderResponseChannel() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  @ServiceActivator(inputChannel = "inboundOrderRequestChannel")
-  public OrderService orderService() {
-    return new OrderService();
-  }
+    @Bean
+    @ServiceActivator(inputChannel = "inboundOrderRequestChannel")
+    public OrderService orderService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public JmsInboundGateway jmsInboundGateway(
-      ConnectionFactory connectionFactory) {
-    JmsInboundGateway gateway = new JmsInboundGateway(
-        simpleMessageListenerContainer(connectionFactory),
-        channelPublishingJmsMessageListener());
-    gateway.setRequestChannel(inboundOrderRequestChannel());
+    @Bean
+    public JmsInboundGateway jmsInboundGateway(ConnectionFactory connectionFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-    return gateway;
-  }
+    @Bean
+    public SimpleMessageListenerContainer simpleMessageListenerContainer(ConnectionFactory connectionFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  public SimpleMessageListenerContainer simpleMessageListenerContainer(
-      ConnectionFactory connectionFactory) {
-    SimpleMessageListenerContainer container =
-        new SimpleMessageListenerContainer();
-    container.setConnectionFactory(connectionFactory);
-    container.setDestinationName(orderRequestDestination);
-    return container;
-  }
-
-  @Bean
-  public ChannelPublishingJmsMessageListener channelPublishingJmsMessageListener() {
-    ChannelPublishingJmsMessageListener channelPublishingJmsMessageListener =
-        new ChannelPublishingJmsMessageListener();
-    channelPublishingJmsMessageListener.setExpectReply(true);
-
-    return channelPublishingJmsMessageListener;
-  }
+    @Bean
+    public ChannelPublishingJmsMessageListener channelPublishingJmsMessageListener() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -9,24 +9,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class Receiver {
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(Receiver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
 
-  private CountDownLatch latch = new CountDownLatch(2);
+    private CountDownLatch latch = new CountDownLatch(2);
 
-  public CountDownLatch getLatch() {
-    return latch;
-  }
+    public CountDownLatch getLatch() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @JmsListener(destination = "${destination.topic}")
-  public void receive1(String message) {
-    LOGGER.info("'subscriber1' received message='{}'", message);
-    latch.countDown();
-  }
+    @JmsListener(destination = "${destination.topic}")
+    public void receive1(String message) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @JmsListener(destination = "${destination.topic}")
-  public void receive2(String message) {
-    LOGGER.info("'subscriber2' received message='{}'", message);
-    latch.countDown();
-  }
+    @JmsListener(destination = "${destination.topic}")
+    public void receive2(String message) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

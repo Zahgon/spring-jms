@@ -14,29 +14,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class Receiver {
 
-  @Autowired
-  private Destination statusDestination;
+    @Autowired
+    private Destination statusDestination;
 
-  @Autowired
-  private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(Receiver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
 
-  @JmsListener(destination = "${destination.order}")
-  public void receiveOrder(String orderNumber,
-      @Header(JmsHeaders.MESSAGE_ID) String messageId) {
-    LOGGER.info("received OrderNumber='{}' with MessageId='{}'",
-        orderNumber, messageId);
-
-    LOGGER.info("sending Status='Accepted' with CorrelationId='{}'",
-        messageId);
-
-    jmsTemplate.send(statusDestination, messageCreator -> {
-      TextMessage message =
-          messageCreator.createTextMessage("Accepted");
-      message.setJMSCorrelationID(messageId);
-      return message;
-    });
-  }
+    @JmsListener(destination = "${destination.order}")
+    public void receiveOrder(String orderNumber, @Header(JmsHeaders.MESSAGE_ID) String messageId) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

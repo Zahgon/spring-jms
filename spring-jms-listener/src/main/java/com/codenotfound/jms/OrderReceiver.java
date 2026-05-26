@@ -11,23 +11,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderReceiver {
 
-  private static final Logger LOGGER =
-      LoggerFactory.getLogger(OrderReceiver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderReceiver.class);
 
-  @Value("${destination.status1}")
-  private String status1Destination;
+    @Value("${destination.status1}")
+    private String status1Destination;
 
-  @Value("${destination.status2}")
-  private String status2Destination;
+    @Value("${destination.status2}")
+    private String status2Destination;
 
-  @Autowired
-  JmsTemplate jmsTemplate;
+    @Autowired
+    JmsTemplate jmsTemplate;
 
-  @JmsListener(destination = "${destination.order}",
-      containerFactory = "orderDefaultJmsListenerContainerFactory")
-  public void receiveOrder(String order) {
-    LOGGER.info("received order='{}'", order);
-    jmsTemplate.convertAndSend(status1Destination, "Accepted");
-    jmsTemplate.convertAndSend(status2Destination, "Accepted");
-  }
+    @JmsListener(destination = "${destination.order}", containerFactory = "orderDefaultJmsListenerContainerFactory")
+    public void receiveOrder(String order) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

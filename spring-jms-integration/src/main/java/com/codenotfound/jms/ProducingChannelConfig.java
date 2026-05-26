@@ -12,21 +12,17 @@ import org.springframework.messaging.MessageHandler;
 @Configuration
 public class ProducingChannelConfig {
 
-  @Value("${destination.integration}")
-  private String integrationDestination;
+    @Value("${destination.integration}")
+    private String integrationDestination;
 
-  @Bean
-  public DirectChannel producingChannel() {
-    return new DirectChannel();
-  }
+    @Bean
+    public DirectChannel producingChannel() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-  @Bean
-  @ServiceActivator(inputChannel = "producingChannel")
-  public MessageHandler jmsMessageHandler(JmsTemplate jmsTemplate) {
-    JmsSendingMessageHandler handler =
-        new JmsSendingMessageHandler(jmsTemplate);
-    handler.setDestinationName(integrationDestination);
-
-    return handler;
-  }
+    @Bean
+    @ServiceActivator(inputChannel = "producingChannel")
+    public MessageHandler jmsMessageHandler(JmsTemplate jmsTemplate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }
